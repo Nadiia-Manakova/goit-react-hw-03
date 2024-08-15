@@ -60,11 +60,11 @@ ul {
   flex-direction: column;
   gap: 30px;
   align-items: left;
+  margin-top: 50px;
 }
 
 .section {
   width: 300px;
-  margin: 0;
   position: relative;
   margin-left: auto;
   margin-right: auto;

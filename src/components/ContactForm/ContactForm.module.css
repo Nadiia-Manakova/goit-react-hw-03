@@ -29,7 +29,7 @@
 }
 
 .formField:focus {
-  outline: grey solid 1px;
+  outline: lightgrey solid 1px;
 }
 .formLabel {
   color: grey;

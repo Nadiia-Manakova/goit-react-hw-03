@@ -11,9 +11,9 @@ export const ContactForm = ({ onAdd }) => {
       .min(3, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
-    number: Yup.string()
+    number: Yup.number()
       .min(3, "Too Short!")
-      .max(50, "Too Long!")
+      .max(15, "Too Long!")
       .required("Required"),
   });
 

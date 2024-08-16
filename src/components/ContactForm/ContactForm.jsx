@@ -13,7 +13,7 @@ export const ContactForm = ({ onAdd }) => {
       .required("Required"),
     number: Yup.number()
       .min(3, "Too Short!")
-      .max(15, "Too Long!")
+      .max(20, "Too Long!")
       .required("Required"),
   });
 

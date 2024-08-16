@@ -5,7 +5,7 @@ import { setLocale } from "yup";
 import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
 
-export const ContactForm = () => {
+export const ContactForm = ({ onAdd }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too Short!")
@@ -21,10 +21,15 @@ export const ContactForm = () => {
     name: "",
     number: "",
   };
-  const handleSubmit = (values, actions) => {
-    console.log(values);
-    actions.resetForm();
+  const handleSubmit = (values, { resetForm }) => {
+    onAdd({
+      id: nanoid(),
+      name: values.name,
+      number: values.number,
+    });
+    resetForm();
   };
+
   const nameFieldId = useId();
   const phoneFieldId = useId();
   return (

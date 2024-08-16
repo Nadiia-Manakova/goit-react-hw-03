@@ -10,9 +10,17 @@ export default function App() {
     const savedContacts = localStorage.getItem("saved-contact");
     return savedContacts ? JSON.parse(savedContacts) : initialContacts;
   });
+  const [filter, setFilter] = useState("");
+
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
       return [...prevContacts, newContact];
+    });
+  };
+
+  const deleteContact = (contactId) => {
+    setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
 
@@ -20,13 +28,16 @@ export default function App() {
     localStorage.setItem("saved-contact", JSON.stringify(contacts));
   }, [contacts]);
 
+  const visibleContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   return (
     <div className={css.section}>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
 
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );
 }

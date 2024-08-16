@@ -3,7 +3,7 @@ import { useId } from "react";
 
 import css from "./SearchBox.module.css";
 
-export const SearchBox = () => {
+export const SearchBox = ({ value, onFilter }) => {
   const searchFieldId = useId();
   return (
     <Formik>
@@ -16,6 +16,8 @@ export const SearchBox = () => {
           name="search"
           id={searchFieldId}
           className={css.formField}
+          value={value}
+          onChange={(evt) => onFilter(evt.target.value)}
         />
       </Form>
     </Formik>

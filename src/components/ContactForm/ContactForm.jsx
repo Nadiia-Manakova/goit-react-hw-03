@@ -11,7 +11,8 @@ export const ContactForm = ({ onAdd }) => {
       .min(3, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
-    number: Yup.number()
+    number: Yup.string()
+      .matches(/^\d+$/, "Number must contain only digits")
       .min(3, "Too Short!")
       .max(20, "Too Long!")
       .required("Required"),
